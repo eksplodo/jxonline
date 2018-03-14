@@ -40,7 +40,7 @@
                             </dl>
                             <div class="btn">
                                 <a class="personcenter fl" href="usercenter-info.html">进入个人中心</a>
-                                <a class="fr" href="/logout/">退出</a>
+                                <a class="fr" href="{% url 'logout' %}">退出</a>
                             </div>
                         </div>
                     </div>
@@ -59,7 +59,7 @@
             {% endif %}
             <div class="middle">
                 <div class="wp">
-                    <a href="index.html"><img class="fl" src="/static/images/logo.jpg"/></a>
+                    <a href="index.html"><img class="fl" src="{% static 'images/logo.jpg' %}"/></a>
                     <div class="searchbox fr">
                         <div class="selectContainer fl">
                             <span class="selectOption" id="jsSelectOption" data-value="course">
@@ -72,7 +72,7 @@
                             </ul>
                         </div>
                         <input id="search_keywords" class="fl" type="text" value="" placeholder="请输入搜索内容"/>
-                        <img class="search_btn fr" id="jsSearchBtn" src="/static/images/search_btn.png"/>
+                        <img class="search_btn fr" id="jsSearchBtn" src="{% static 'images/search_btn.png' %}"/>
                     </div>
                 </div>
             </div>
@@ -82,10 +82,10 @@
 				<div class="nav">
 					<div class="wp">
 						<ul>
-							<li class="active" ><a href="index.html">首页</a></li>
+							<li class="active" ><a href="{% url 'index' %}">首页</a></li>
 							<li >
 								<a href="course-list.html">
-									公开课<img class="hot" src="/static/images/nav_hot.png">
+									公开课<img class="hot" src="{% static 'images/nav_hot.png' %}">
 								</a>
 							</li>
 							<li >
@@ -101,55 +101,42 @@
     </header>
 </section>
 <!--crumbs start-->
-
-
-
     <div class="banner">
 			<div class="wp">
 				<div class="fl">
 					<div class="imgslide">
 						<ul class="imgs">
-                            
                             <li>
                                     <a href="http://www.imooc.com">
-                                        <img width="1200" height="478" src="/static/media/banner/2016/11/57a801860001c34b12000460.jpg" />
+                                        <img width="1200" height="478" src="{% static 'media/banner/2016/11/57a801860001c34b12000460.jpg' %}" />
                                     </a>
                                 </li>
-                            
                             <li>
                                     <a href="http://www.projectsedu.com">
-                                        <img width="1200" height="478" src="/static/media/banner/2016/11/57aa86a0000145c512000460.jpg" />
+                                        <img width="1200" height="478" src="{% static 'media/banner/2016/11/57a801860001c34b12000460.jpg' %}" />
                                     </a>
                                 </li>
-                            
                             <li>
                                     <a href="http://www.projectsedu.com">
-                                        <img width="1200" height="478" src="/static/media/banner/2016/11/57a801860001c34b12000460_z4Vb8zl.jpg" />
+                                        <img width="1200" height="478" src="{% static 'media/banner/2016/11/57a801860001c34b12000460_z4Vb8zl.jpg' %}" />
                                     </a>
                                 </li>
-                            
                             <li>
                                     <a href="http://www.projectsedu.com">
-                                        <img width="1200" height="478" src="/static/media/banner/2016/11/57aa86a0000145c512000460_nMwvoQD.jpg" />
+                                        <img width="1200" height="478" src="{% static 'media/banner/2016/11/57aa86a0000145c512000460_nMwvoQD.jpg' %}" />
                                     </a>
                                 </li>
-                            
                             <li>
                                     <a href="http://www.projectsedu.com">
-                                        <img width="1200" height="478" src="/static/media/banner/2016/11/57aa86a0000145c512000460_GXIBATC.jpg" />
+                                        <img width="1200" height="478" src="{% static 'media/banner/2016/11/57aa86a0000145c512000460_GXIBATC.jpg' %}" />
                                     </a>
                                 </li>
-                            
-
 						</ul>
 					</div>
 					<div class="unslider-arrow prev"></div>
 					<div class="unslider-arrow next"></div>
 				</div>
-
 				</div>
-
-
 			</div>
 <!--banner end-->
 <!--feature start-->
@@ -157,19 +144,19 @@
 		<div class="wp">
 			<ul class="feature">
 				<li class="feature1">
-					<img class="pic" src="/static/images/feature1.png"/>
+					<img class="pic" src="{% static 'images/feature1.png' %}"/>
 					<p class="center">专业权威</p>
 				</li>
 				<li class="feature2">
-					<img class="pic" src="/static/images/feature2.png"/>
+					<img class="pic" src="{% static 'images/feature2.png' %}"/>
 					<p class="center">课程最新</p>
 				</li>
 				<li class="feature3">
-					<img class="pic" src="/static/images/feature3.png"/>
+					<img class="pic" src="{% static 'images/feature3.png' %}"/>
 					<p class="center">名师授课</p>
 				</li>
 				<li class="feature4">
-					<img class="pic" src="/static/images/feature4.png"/>
+					<img class="pic" src="{% static 'images/feature4.png' %}"/>
 					<p class="center">数据真实</p>
 				</li>
 			</ul>
@@ -183,7 +170,7 @@
 				<h1>公开课程</h1>
 				<div class="module1 eachmod">
 					<div class="module1_1 left">
-						<img width="228" height="614" src="/static/images/module1_1.jpg"/>
+						<img width="228" height="614" src="{% static 'images/module1_1.jpg' %}"/>
 						<p class="fisrt_word">名师授课<br/>专业权威</p>
 						<a class="more" href="course-list.html">查看更多课程 ></a>
 					</div>
@@ -194,13 +181,13 @@
                                     
                                     <li>
                                         <a href="course-detail.html">
-                                            <img width="470" height="300" src="/static/media/courses/2016/12/python文件处理.jpg" />
+                                            <img width="470" height="300" src="{% static 'media/courses/2016/12/python文件处理.jpg' %}" />
                                         </a>
                                     </li>
                                     
                                     <li>
                                         <a href="course-detail.html">
-                                            <img width="470" height="300" src="/static/media/courses/2016/12/python面向对象.jpg" />
+                                            <img width="470" height="300" src="{% static 'media/courses/2016/12/python面向对象.jpg' %}" />
                                         </a>
                                     </li>
                                     
@@ -212,7 +199,7 @@
                             
                             <div class="module1_3 box">
                                 <a href="course-detail.html">
-                                    <img width="233" height="190" src="/static/media/courses/2016/11/mysql.jpg"/>
+                                    <img width="233" height="190" src="{% static 'media/courses/2016/11/mysql.jpg' %}"/>
                                 </a>
                                 <div class="des">
                                     <a href="course-detail.html">
@@ -229,7 +216,8 @@
                             
                             <div class="module1_4 box">
                                 <a href="course-detail.html">
-                                    <img width="233" height="190" src="/static/media/courses/2016/11/57035ff200014b8a06000338-240-135.jpg"/>
+                                    <img width="233" height="190" src="{% static 'media/courses/2016/11/57035ff200014b8a06000338-240-135.jpg' %}"/>
+                                    <img width="233" height="190" src="{% static 'media/courses/2016/11/57035ff200014b8a06000338-240-135.jpg' %}"/>
                                 </a>
                                 <div class="des">
                                     <a href="course-detail.html">

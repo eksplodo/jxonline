@@ -138,3 +138,10 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static')
 ]
+
+EMAIL_HOST = 'smtp.163.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = 'eksplodo@163.com'
+EMAIL_HOST_PASSWORD = '1989zzZ'
+EMAIL_USE_TLS = False
+EMAIL_FROM = 'eksplodo@163.com'
