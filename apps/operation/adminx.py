@@ -7,9 +7,9 @@ from .models import UserAsk, CourseComment, UserFavorite, UserMessage, UserCours
 
 
 class UserAskAdmin(object):
-    display_list = ['name', 'course', 'phone', 'add_time']
-    search_fields = ['name', 'course', 'phone']
-    list_filter = ['name', 'course', 'phone', 'add_time']
+    display_list = ['name', 'course', 'monile', 'add_time']
+    search_fields = ['name', 'course', 'mobile']
+    list_filter = ['name', 'course', 'mobile', 'add_time']
 
 
 class CourseCommentAdmin(object):
@@ -19,19 +19,19 @@ class CourseCommentAdmin(object):
 
 
 class UserFavoriteAdmin(object):
-    display_list = ['user', 'fav_id', 'fav_type', 'add_time']
+    list_display = ['user', 'fav_id', 'fav_type', 'add_time']
     search_fields = ['user', 'fav_id', 'fav_type']
     list_filter = ['user', 'fav_id', 'fav_type', 'add_time']
 
 
 class UserMessageAdmin(object):
-    display_list = ['user', 'has_read', 'message', 'add_time']
+    list_display = ['user', 'has_read', 'message', 'add_time']
     search_fields = ['user', 'has_read', 'message']
     list_filter = ['user', 'has_read', 'message', 'add_time']
 
 
 class UserCourseAdmin(object):
-    display_list = ['user', 'course', 'add_time']
+    list_display = ['user', 'course', 'add_time']
     search_fields = ['user', 'course']
     list_filter = ['user', 'course', 'add_time']
 

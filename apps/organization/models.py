@@ -21,6 +21,8 @@ class City(models.Model):
 class CourseOrg(models.Model):
     name = models.CharField(max_length=20, verbose_name='机构名称')
     course_nums = models.IntegerField(default=0, verbose_name='课程数量')
+    students = models.IntegerField(default=0, verbose_name="学习人数")
+    category = models.CharField(max_length=50, choices=(('pxjg', '培训机构'), ('gr', '个人'), ('gx', '高校')), verbose_name='机构类别', default='pxjg')
     desc = models.TextField(verbose_name='课程描述')
     click_nums = models.IntegerField(default=0, verbose_name='点击量')
     collect_nums = models.IntegerField(default=0, verbose_name='收藏数')
@@ -47,6 +49,7 @@ class Teacher(models.Model):
     click_nums = models.IntegerField(default=0, verbose_name='点击量')
     collect_nums = models.IntegerField(default=0, verbose_name='收藏数')
     add_time = models.DateTimeField(default=datetime.now)
+    image = models.ImageField(max_length=100, verbose_name="教师头像", upload_to="teacher/%Y%m", null=True)
 
     class Meta:
         verbose_name = '教师'
