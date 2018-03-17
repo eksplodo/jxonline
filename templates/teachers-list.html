@@ -27,9 +27,9 @@
                 {% for teacher in teachers.object_list %}
                 <dl class="des">
                     <dt>
-                        <a href="/media/teacher/detail/1/">
+                        <a href="{% url 'organization:teacher_detail' teacher.id %}">
                             <div class="picpic">
-                                <img width="100" height="100" class="scrollLoading" src="/media/teacher/201803/aobama_6OG4OtS.png"/>
+                                <img width="100" height="100" class="scrollLoading" src="{{ MEDIA_URL }}{{ teacher.image }}"/>
                             </div>
                         </a>
                         <div class="btn">
@@ -44,7 +44,7 @@
                         </div>
                     </dt>
                     <dd>
-                        <a href="/media/teacher/detail/1/">
+                        <a href="{% url 'organization:teacher_detail' teacher.id %}">
                             <h1>{{ teacher.name }}<span class="key picbig">金牌讲师</span></h1>
                         </a>
                         <ul class="cont">
@@ -87,13 +87,13 @@
         {% for teacher in hot_teachers %}
             <dl class="des">
                 <span class="num fl">1</span>
-                <a href="/diary/hk_detail/6/">
+                <a href="{% url 'organization:teacher_detail' teacher.id %}">
                     <dt>
                         <img width="50" height="50" class="scrollLoading"  src="{{ MEDIA_URL }}{{ teacher.image }}"/>
                     </dt>
                 </a>
                 <dd>
-                    <a href="/diary/hk_detail/6/">
+                    <a href="{% url 'organization:teacher_detail' teacher.id %}">
                         <h1 title="{{ teacher.name }}">{{ teacher.name }}</h1>
                     </a>
                     <p>工作年限：<span>{{ teacher.work_years }}年</span></p>

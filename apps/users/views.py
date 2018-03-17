@@ -132,3 +132,11 @@ class UpdatePwdView(View):
         else:
             email = request.POST.get('email', '')
             return render(request, 'password_reset.html', {'email': email, 'pwdupdate_form': pwdupdate_form})
+
+
+class IndexView(View):
+    def get(self, request):
+        page_title = 'index'
+        return render(request, 'index.html',{
+            "page_title": page_title,
+        })

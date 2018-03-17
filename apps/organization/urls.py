@@ -7,14 +7,17 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 from organization.views import \
-    OrgListView, TeacherListView, CourseView, \
-    OrgHomelView, OrgCourseView, OrgDescView, OrgTeacherView
+    OrgListView, TeacherListView,\
+    OrgHomelView, OrgCourseView,\
+    OrgDescView, OrgTeacherView,\
+    TeacherDetailView
 
 app_name = "organization"
 urlpatterns = [
-    path('list/', OrgListView.as_view(), name='org_list'),
-    path('teacher_list/', TeacherListView.as_view(), name="teacher_list"),
-    path('course_list', CourseView.as_view(), name='course_list'),
+    path('org/list/', OrgListView.as_view(), name='org_list'),
+    # 授课老师
+    path('teachers/', TeacherListView.as_view(), name="teacher_list"),
+    path('teacher/detail/<int:teacher_id>/', TeacherDetailView.as_view(), name='teacher_detail'),
     path('home/<int:org_id>/', OrgHomelView.as_view(), name='org_home'),
     path('home/<int:org_id>/courses/', OrgCourseView.as_view(), name='org_courses'),
     path('home/<int:org_id>/desc/', OrgDescView.as_view(), name='org_desc'),

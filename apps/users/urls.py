@@ -5,11 +5,12 @@ __date__ = '2018/3/13 10:34'
 
 from django.urls import path
 from django.views.generic import TemplateView
-from .views import LoginView, RegisterView, ActiveView, ForgetView, PwdResetView, UpdatePwdView, LogoutView
+from .views import LoginView, RegisterView, ActiveView,\
+    ForgetView, PwdResetView, UpdatePwdView, LogoutView, IndexView
 
 app_name = "users"
 urlpatterns = [
-    path('', TemplateView.as_view(template_name='index.html'), name='index'),
+    path('', IndexView.as_view(), name='index'),
     path('login/', LoginView.as_view(), name='login'),
     path('register/', RegisterView.as_view(), name='register'),
     path('active/<str:active_code>/', ActiveView.as_view(), name='avtive'),

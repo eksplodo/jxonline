@@ -1,4 +1,4 @@
-from django.shortcuts import render, HttpResponse
+from django.shortcuts import render
 from django.views.generic import View
 from .models import CourseOrg, City, Teacher
 
@@ -6,6 +6,7 @@ from pure_pagination import Paginator, PageNotAnInteger
 
 class OrgListView(View):
     def get(self, request):
+        page_title = "orgs"
         # 机构
         all_orgs = CourseOrg.objects.all()
         org_nums = all_orgs.count()
@@ -46,11 +47,13 @@ class OrgListView(View):
             'category': category,
             "hot_orgs": hot_orgs,
             "sort_by": sort_by,
+            "page_title": page_title
         })
 
 
 class TeacherListView(View):
     def get(self, request):
+        page_title = "teachers"
         # 教师列表
         teachers = Teacher.objects.all()
         teacher_nums = teachers.count()
@@ -75,12 +78,8 @@ class TeacherListView(View):
             'teacher_nums': teacher_nums,
             "hot_teachers": hot_teachers,
             "sort_by": sort_by,
+            "page_title": page_title
         })
-
-
-class CourseView(View):
-    def get(self, request):
-        return render(request, 'course-list.html', {})
 
 
 class OrgHomelView(View):
@@ -128,4 +127,18 @@ class OrgTeacherView(View):
             "course_org": course_org,
             "all_teachers": all_teachers,
             'current_page': current_page
+        })
+
+
+class TeacherDetailView(View):
+    def get(self, request, teacher_id):
+        teacher = Teacher.objects.get(id=teacher_id)
+        courses = teacher.course_set.all()
+        hot_teachers = teacher.org.teacher_set.order_by("-collect_nums")
+        page_title = 'teachers'
+        return render(request, 'teacher-detail.html', {
+            "teacher": teacher,
+            "courses": courses,
+            "hot_teachers": hot_teachers,
+            "page_title": page_title
         })

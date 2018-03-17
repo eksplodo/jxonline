@@ -21,7 +21,8 @@ urlpatterns = [
     # path('admin/', admin.site.urls),
     path('xadmin/', xadmin.site.urls),
     path('', include('users.urls', namespace='users')),
-    path('org/', include('organization.urls', namespace='organization')),
+    path('', include('organization.urls', namespace='organization')),
     path('add/', include('operation.urls', namespace='operation')),
-    path('captcha', include('captcha.urls')),
+    path('course/', include('courses.urls', namespace='courses')),
+    path('captcha/', include('captcha.urls')),
 ]
