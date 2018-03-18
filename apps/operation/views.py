@@ -1,6 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponse
 from django.views import View
-from django.http import HttpResponse
+# from django.http import HttpResponse
 
 from .models import UserFavorite
 from courses.models import Course
@@ -28,51 +28,27 @@ class UserFavView(View):
     def post(self, request):
         fav_id = request.POST.get('fav_id', 0)
         fav_type = request.POST.get('fav_type', 0)
-        if not request.user.is_authenticated():
-            return HttpResponse("{'status': 'fail', 'msg': '用户未登录'}", content_type='application/json')
-        exist_records = UserFavorite.objects.filter(user=request.user, fav_id=int(fav_id), fav_type=int(fav_type))
-        if exist_records:
-            # 已经收藏了, 删除收藏
-            exist_records.delete()
-            if int(fav_type) == 1:
-                course = Course.objects.get(id=int(fav_id))
-                course.collect_nums -= 1
-                if course.collect_nums < 0:
-                    course.collect_nums = 0
-                    course.save()
-            elif int(fav_type) == 2:
-                org = CourseOrg.objects.get(id=int(fav_id))
-                org.collect_nums -= 1
-                if org.collect_nums < 0:
-                    org.collect_nums = 0
-                    org.save()
-            elif int(fav_type) == 3:
-                teacher = Teacher.objects.get(id=int(fav_id))
-                teacher.collect_nums -= 1
-                if teacher.collect_nums < 0:
-                    teacher.collect_nums = 0
-                    teacher.save()
+
+        if not request.user.is_authenticated:
+            # 判断用户是否登陆
+            return HttpResponse("{'status': 'fail', 'msg': '用户未登录'}", content_type="application/json")
         else:
-            # 未收藏，收藏
-            user_fav = UserFavorite()
-            if int(fav_id) > 0 and int(fav_type) > 0:
-                user_fav.fav_id = int(fav_id)
-                user_fav.fav_type = int(fav_type)
-                user_fav.user = request.user
-                user_fav.save()
-                if int(fav_type) == 1:
-                    course = Course.objects.get(id=int(fav_id))
-                    course.collect_nums += 1
-                    course.save()
-                elif int(fav_type) == 2:
-                    org = CourseOrg.objects.get(id=int(fav_id))
-                    org.collect_nums += 1
-                    org.save()
-                elif int(fav_type) == 3:
-                    teacher = Teacher.objects.get(id=int(fav_id))
-                    teacher.collect_nums += 1
-                    teacher.save()
-                return HttpResponse("{'status': 'success', 'msg': '已收藏'}", content_type='application/json')
-            return HttpResponse("{'status': 'fail', 'msg': '收藏出错'}", content_type='application/json')
+            # 查询是否存在记录，存在者删除，否则添加
+            record = UserFavorite.objects.filter(user=request.user, fav_id=int(fav_id), fav_type=int(fav_type))
+            if record:
+                record.delete()
+                return HttpResponse("{'status': 'success', 'msg': '收藏'}", content_type="application/json")
+            else:
+                # 判断fav_id和fav_type的值，如果都等于零，则返回收藏出错。
+                if int(fav_id) > 0 and int(fav_type) > 0:
+                    user_fav = UserFavorite()
+                    user_fav.fav_id = int(fav_id)
+                    user_fav.fav_type = int(fav_type)
+                    user_fav.user = request.user
+                    user_fav.save()
+                    return HttpResponse("{'status': 'success', 'msg': '已收藏'}", content_type="application/json")
+                else:
+                    return HttpResponse("{'status': 'fail', 'msg': '收藏失败'}", content_type="application/json")
+
 
 

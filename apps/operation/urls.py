@@ -10,5 +10,5 @@ from .views import UserAskView, UserFavView
 app_name = "operation"
 urlpatterns = [
     path('ask/', UserAskView.as_view(), name='add_ask'),
-    path('fav/', UserFavView.as_view(), name='add_fav')
+    path('favorite/', UserFavView.as_view(), name='add_fav')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

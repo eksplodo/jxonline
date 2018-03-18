@@ -21,5 +21,5 @@ urlpatterns = [
     path('home/<int:org_id>/', OrgHomelView.as_view(), name='org_home'),
     path('home/<int:org_id>/courses/', OrgCourseView.as_view(), name='org_courses'),
     path('home/<int:org_id>/desc/', OrgDescView.as_view(), name='org_desc'),
-    path('home/<int:org_id>/teacher/', OrgTeacherView.as_view(), name='org_teacher'),
+    path('home/<int:org_id>/teachers/', OrgTeacherView.as_view(), name='org_teacher'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)   # 配置上传文件的处理地址
